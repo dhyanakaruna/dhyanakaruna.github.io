@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 text-gray-900 font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-burgundy-600 to-maroon-700 hover:from-burgundy-700 hover:to-maroon-800 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-burgundy-600 text-burgundy-600 hover:bg-gradient-to-r hover:from-burgundy-600 hover:to-maroon-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-white/20;
+  }
+
+  .section-padding {
+    @apply py-8 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-red-600 via-purple-600 to-blue-600 bg-clip-text text-transparent;
+    /* Fallback for browsers that don't support bg-clip-text */
+    color: #dc2626;
+  }
+
+  .blob-shape {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .gradient-bg-primary {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+  }
+
+  .gradient-bg-secondary {
+    background: linear-gradient(135deg, #4B0082 0%, #FF8C00 50%, #8B0000 100%);
+  }
+
+  .gradient-bg-tertiary {
+    background: linear-gradient(135deg, #FF8C00 0%, #8B0000 50%, #4B0082 100%);
+  }
+
+  .gradient-bg-hero {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+  }
+
+  .gradient-bg-profile {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+  }
+
+  .gradient-bg-collaborate {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #8B0000 0%, #4B0082 50%, #FF8C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
