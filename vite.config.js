@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/dhyanakaruna.github.io/',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
