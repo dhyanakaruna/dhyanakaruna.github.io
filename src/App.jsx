@@ -1,5 +1,6 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Skills from './pages/Skills';
@@ -20,6 +21,10 @@ function MainPortfolio() {
 }
 
 function App() {
+  useEffect(() => {
+    console.log('App component mounted successfully');
+  }, []);
+
   return (
     <HelmetProvider>
       <Router>
