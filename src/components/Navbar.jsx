@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -97,7 +96,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <motion.div
+          <div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -121,7 +120,7 @@ const Navbar = () => {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </nav>

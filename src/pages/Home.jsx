@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { ArrowRight, Linkedin, Github } from 'lucide-react';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -46,10 +46,10 @@ const Home = () => {
                   Download CV
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Content */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -82,7 +82,7 @@ const Home = () => {
                   <Github className="w-5 h-5 text-burgundy-600" />
                 </a>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 
@@ -69,7 +69,7 @@ const Contact = () => {
       {/* Hero Section */}
       <section id="contact" className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -82,7 +82,7 @@ const Contact = () => {
               Ready to start your next project? Let's discuss your ideas and create something amazing together. 
               I'm here to help bring your digital vision to life.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -91,7 +91,7 @@ const Contact = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Form */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -101,14 +101,14 @@ const Contact = () => {
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h2>
                 
                 {isSubmitted && (
-                  <motion.div
+                  <div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center gap-3"
                   >
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="text-green-800 font-medium text-sm sm:text-base">Thank you! Your message has been sent successfully.</span>
-                  </motion.div>
+                  </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -185,10 +185,10 @@ const Contact = () => {
                   </button>
                 </form>
               </div>
-            </motion.div>
+            </div>
 
             {/* Contact Information */}
-            <motion.div
+            <div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -204,7 +204,7 @@ const Contact = () => {
 
                 <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((info, index) => (
-                    <motion.div
+                    <div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +231,7 @@ const Contact = () => {
                         )}
                         <p className="text-gray-600 text-xs sm:text-sm">{info.description}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -257,7 +257,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -265,7 +265,7 @@ const Contact = () => {
       {/* FAQ Section */}
       {/* <section className="section-padding bg-white">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -276,7 +276,7 @@ const Contact = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Common questions about my services and working process.
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
             {[
@@ -297,7 +297,7 @@ const Contact = () => {
                 answer: "I maintain regular communication through email, video calls, and project management tools. You'll receive weekly progress updates and can reach me during business hours."
               }
             ].map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -307,7 +307,7 @@ const Contact = () => {
               >
                 <h3 className="font-semibold text-gray-900 mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { Code, Database, Palette, Smartphone, Server, Cloud, Globe, Zap, Shield, Cpu, FileText, Terminal } from 'lucide-react';
 
 // Skill Item Component
@@ -101,7 +101,7 @@ const Skills = () => {
       {/* Hero Section */}
       <section id="skills" className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -110,7 +110,7 @@ const Skills = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               My <span className="text-gradient">Skills</span>
             </h1>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -119,7 +119,7 @@ const Skills = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-8">
             {skillCategories.map((category, index) => (
-              <motion.div
+              <div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +137,7 @@ const Skills = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.div
+                    <div
                       key={skillIndex}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -148,10 +148,10 @@ const Skills = () => {
                         skillName={skill.name}
                         icon={skill.icon}
                       />
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

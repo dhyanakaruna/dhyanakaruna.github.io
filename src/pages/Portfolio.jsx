@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { ExternalLink, Smartphone, Globe, Database } from 'lucide-react';
 
 const Portfolio = () => {
@@ -54,7 +54,7 @@ const Portfolio = () => {
       {/* Hero Section */}
       <section id="portfolio" className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -66,25 +66,25 @@ const Portfolio = () => {
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               Explore my latest projects and see how I can help businesses achieve their digital goals through innovative web solutions.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Web Projects Section */}
       <section className="section-padding bg-gradient-to-br from-gray-50/80 via-blue-50/40 to-purple-50/40 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-8"
           >
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.map((project, index) => (
-              <motion.div
+              <div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ const Portfolio = () => {
                 >
                   {project.link} <ExternalLink className="w-4 h-4" />
                 </a>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

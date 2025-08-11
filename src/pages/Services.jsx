@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { Code, Database, Palette, Smartphone, BarChart3, Globe, Check, ArrowRight, Cloud, Shield, ArrowLeft, Star, Zap, Users, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -143,7 +143,7 @@ const Services = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -165,7 +165,7 @@ const Services = () => {
               I specialize in full-stack development and cloud architecture, delivering enterprise-grade solutions with modern technologies. 
               My expertise spans from frontend development to backend systems and cloud infrastructure.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -174,7 +174,7 @@ const Services = () => {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {services.map((service, index) => (
-              <motion.div
+              <div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ const Services = () => {
                     Learn More <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -213,7 +213,7 @@ const Services = () => {
       {/* Development Process */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -224,11 +224,11 @@ const Services = () => {
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               A proven methodology that ensures successful project delivery and client satisfaction.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {process.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -241,7 +241,7 @@ const Services = () => {
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
                 <p className="text-sm sm:text-base text-gray-600">{step.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -250,7 +250,7 @@ const Services = () => {
       {/* Why Choose Me - Enhanced */}
       <section className="section-padding bg-gradient-to-br from-gray-50/80 via-blue-50/40 to-purple-50/40 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -267,7 +267,7 @@ const Services = () => {
               I bring a unique combination of technical expertise, reliability, and dedication to every project. 
               Here's what sets me apart from the rest.
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
@@ -301,7 +301,7 @@ const Services = () => {
                   stats: "Latest"
                 }
               ].map((item, index) => (
-                <motion.div
+                <div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ const Services = () => {
                       <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -335,7 +335,7 @@ const Services = () => {
       {/* Call to Action */}
       <section className="section-padding bg-gradient-collaborate animate-gradient-shift">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -357,7 +357,7 @@ const Services = () => {
                 Schedule a Call
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

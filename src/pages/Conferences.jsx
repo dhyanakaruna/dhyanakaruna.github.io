@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { useState } from 'react';
 import { Calendar, MapPin, Users, BookOpen, Lightbulb, ArrowRight, ExternalLink, Clock, Award, CheckCircle, Settings, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -85,7 +85,7 @@ const Conferences = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -106,14 +106,14 @@ const Conferences = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Sharing insights and learnings from industry conferences and events that shape my professional growth.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Conference Details */}
       <section className="section-padding bg-gradient-to-br from-gray-50/80 via-blue-50/40 to-purple-50/40 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -169,14 +169,14 @@ const Conferences = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Key Learnings Section */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -187,12 +187,12 @@ const Conferences = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover the valuable insights and practical knowledge gained from this conference experience.
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               {learnings.map((learning, index) => (
-                <motion.div
+                <div
                   key={learning.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -214,14 +214,14 @@ const Conferences = () => {
                       <p className="text-gray-600 text-sm mb-4">{learning.summary}</p>
                       
                       {expandedLearning === learning.id ? (
-                        <motion.div
+                        <div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           className="text-gray-700 text-sm leading-relaxed"
                         >
                           {learning.details}
-                        </motion.div>
+                        </div>
                       ) : null}
                       
                       <button
@@ -233,7 +233,7 @@ const Conferences = () => {
                       </button>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -243,7 +243,7 @@ const Conferences = () => {
       {/* Key Findings Summary */}
       <section className="section-padding bg-gradient-collaborate animate-gradient-shift">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -254,12 +254,12 @@ const Conferences = () => {
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
               The most important insights that will influence my development approach going forward.
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               {keyFindings.map((finding, index) => (
-                <motion.div
+                <div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -271,7 +271,7 @@ const Conferences = () => {
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   <p className="text-white/90 leading-relaxed">{finding}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -281,7 +281,7 @@ const Conferences = () => {
       {/* Call to Action */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -297,7 +297,7 @@ const Conferences = () => {
             <button className="btn-primary">
               Start a Project <ExternalLink className="w-4 h-4" />
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>
