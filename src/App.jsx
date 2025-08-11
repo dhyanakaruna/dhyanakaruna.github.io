@@ -22,7 +22,7 @@ function MainPortfolio() {
 
 function App() {
   useEffect(() => {
-    console.log('App component mounted successfully');
+    console.log('App components mounted successfully');
   }, []);
 
   return (
