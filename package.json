@@ -4,13 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://dhyanakaruna.github.io",
+  "engines": {
+    "node": ">=20.0.0 <21.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "postinstall": "nvm use"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
