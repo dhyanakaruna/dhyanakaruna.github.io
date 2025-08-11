@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/dhyanakaruna.github.io/',
+  base: process.env.NODE_ENV === 'production' ? '/dhyanakaruna.github.io/' : '/',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
@@ -13,9 +13,13 @@ export default defineConfig({
     }
   },
   server: {
-    // Force proper MIME types for JSX files
+    port: 5173,
+    host: true,
     fs: {
       strict: false
     }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom']
   }
 })
