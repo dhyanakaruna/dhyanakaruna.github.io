@@ -1,11 +1,16 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, MapPin, Users, BookOpen, Lightbulb, ArrowRight, ExternalLink, Clock, Award, CheckCircle, Settings, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Conferences = () => {
   const [expandedLearning, setExpandedLearning] = useState(null);
   const navigate = useNavigate();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const conferenceData = {
     name: "React Nexus Conference",
@@ -294,9 +299,21 @@ const Conferences = () => {
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               I'm excited to implement these insights in future projects. Let's discuss how these learnings can benefit your next development project.
             </p>
-            <button className="btn-primary">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=dhyanakarunanidhi@gmail.com&su=Project%20Inquiry:%20Let's%20Collaborate&body=Hi%20Dhyana,%0A%0AI'm%20interested%20in%20starting%20a%20project%20with%20you.%20I%20found%20your%20portfolio%20and%20would%20love%20to%20discuss%20my%20requirements.%0A%0APlease%20let%20me%20know%20when%20would%20be%20a%20good%20time%20to%20connect.%0A%0ABest%20regards"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2"
+              onClick={(e) => {
+                // Fallback to mailto if Gmail web is blocked or not preferred
+                setTimeout(() => {
+                  window.location.href =
+                    "mailto:dhyanakarunanidhi@gmail.com?subject=Project%20Inquiry:%20Let's%20Collaborate&body=Hi%20Dhyana,%0A%0AI'm%20interested%20in%20starting%20a%20project%20with%20you.%20I%20found%20your%20portfolio%20and%20would%20love%20to%20discuss%20my%20requirements.%0A%0APlease%20let%20me%20know%20when%20would%20be%20a%20good%20time%20to%20connect.%0A%0ABest%20regards";
+                }, 500);
+              }}
+            >
               Start a Project <ExternalLink className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

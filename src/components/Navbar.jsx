@@ -19,10 +19,21 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      // Add a small delay to ensure the element is fully rendered
+      setTimeout(() => {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 50);
+    } else {
+      // If element not found, scroll to bottom of page for contact
+      if (sectionId === 'contact') {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
     }
     setIsOpen(false);
   };

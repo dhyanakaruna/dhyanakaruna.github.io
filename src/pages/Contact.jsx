@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2, Video } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2, Video, Copy, Check } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,8 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [emailCopied, setEmailCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
 
   const GETFORM_ENDPOINT = 'https://getform.io/f/aejejyzb';
 
@@ -59,21 +61,96 @@ const Contact = () => {
     return `${obfuscatedLocal}@${obfuscatedDomain}`;
   };
 
+  const obfuscatePhone = (phone) => {
+    const cleaned = phone.replace(/\s/g, '');
+    const countryCode = cleaned.substring(0, 3);
+    const middlePart = cleaned.substring(3, 7);
+    const lastPart = cleaned.substring(cleaned.length - 2);
+    return `${countryCode} *** *** ${lastPart}`;
+  };
+
+  const copyEmailToClipboard = async () => {
+    const email = "dhyanakarunanidhi@gmail.com";
+    try {
+      await navigator.clipboard.writeText(email);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    }
+  };
+
+  const copyPhoneToClipboard = async () => {
+    const phone = "+91 8526853322";
+    try {
+      await navigator.clipboard.writeText(phone);
+      setPhoneCopied(true);
+      setTimeout(() => setPhoneCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = phone;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setPhoneCopied(true);
+      setTimeout(() => setPhoneCopied(false), 2000);
+    }
+  };
+
+  const handlePhoneClick = () => {
+    const phone = "+918526853322";
+    const message = "Hi Dhyana! I'd like to connect with you.";
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleEmailClick = () => {
+    const email = "dhyanakarunanidhi@gmail.com";
+    const subject = "Hello Dhyana - Let's Connect";
+    const body = `Hi Dhyana,
+
+    I came across your profile and noticed your work and expertise. I’d be glad to connect and explore ways we might work together or share ideas.
+
+    Whether you're interested in freelance projects, collaboration opportunities, coding partnerships, or have any questions, I'd be happy to chat.
+
+    Please let me know when would be a convenient time to connect.
+
+    Best regards`;
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    } else {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank');
+    }
+  };
+
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
       value: obfuscateEmail("dhyanakarunanidhi@gmail.com"),
       description: "Send me an email anytime",
-      link: "mailto:dhyanakarunanidhi@gmail.com",
       isClickable: true
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      value: "+91 8526853322",
+      value: obfuscatePhone("+91 8526853322"),
       description: "Call me anytime",
-      link: "tel:+918526853322",
       isClickable: true
     }
   ];
@@ -89,13 +166,12 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Get In <span className="text-gradient">Touch</span>
-            </h1>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Ready to start your next project? Let's discuss your ideas and create something amazing together. 
-              I'm here to help bring your digital vision to life.
-            </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Let’s Create. <span className="text-gradient">Let’s Collaborate</span>
+             </h1>
+             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Whether you’re hiring or building, I deliver results.
+             </p>
           </div>
         </div>
       </section>
@@ -112,7 +188,7 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <div className="card">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h2>
+                                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">What’s on Your Mind?</h2>
                 
                 {isSubmitted && (
                   <div
@@ -193,7 +269,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors text-sm sm:text-base"
-                      placeholder="What's this about?"
+                                             placeholder="Project inquiry, job opportunity, or collaboration"
                       disabled={isLoading}
                     />
                   </div>
@@ -210,7 +286,7 @@ const Contact = () => {
                       required
                       rows={5}
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors resize-none text-sm sm:text-base"
-                      placeholder="Tell me about your project..."
+                                             placeholder="Tell me about your idea, role, or project..."
                       disabled={isLoading}
                     ></textarea>
                   </div>
@@ -225,13 +301,16 @@ const Contact = () => {
                         <Loader2 className="w-4 h-4 animate-spin" />
                         Sending...
                       </>
-                    ) : (
-                      <>
-                        Send Message <Send className="w-4 h-4" />
-                      </>
-                    )}
-                  </button>
-                </form>
+                                         ) : (
+                       <>
+                        Send My Message <Send className="w-4 h-4" />
+                       </>
+                     )}
+                                     </button>
+                   <p className="text-xs text-gray-500 mt-3 text-center">
+                     I typically respond within 24 hours. Your message is confidential.
+                   </p>
+                 </form>
               </div>
             </div>
 
@@ -243,12 +322,13 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <div className="space-y-6 sm:space-y-8">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Contact Information</h2>
-                  <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
-                    Feel free to reach out through any of these channels. I typically respond within 24 Hours.
-                  </p>
-                </div>
+                                 <div>
+                   <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Contact Information</h2>
+                   <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
+                     Choose your preferred way to connect! I'm here to help and typically respond within 24 hours. 
+                     Whether you have a project in mind, want to collaborate, or just want to chat, feel free to reach out.
+                   </p>
+                 </div>
 
                 <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((info, index) => (
@@ -265,19 +345,65 @@ const Contact = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{info.title}</h3>
-                        {info.isClickable ? (
-                          <a 
-                            href={info.link}
-                            className="text-burgundy-600 font-medium mb-1 text-sm sm:text-base hover:text-burgundy-700 transition-colors cursor-pointer underline"
-                            target={info.title === "Email" ? "_blank" : "_self"}
-                            rel={info.title === "Email" ? "noopener noreferrer" : ""}
-                          >
-                            {info.value}
-                          </a>
+                                                                         {info.isClickable ? (
+                          info.title === "Email" ? (
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-3">
+                                <button 
+                                  onClick={handleEmailClick}
+                                  className="text-burgundy-600 font-medium text-sm sm:text-base hover:text-burgundy-700 transition-all duration-200 cursor-pointer underline hover:no-underline hover:bg-burgundy-50 px-2 py-1 rounded-md"
+                                >
+                                  {info.value}
+                                </button>
+                                <button
+                                  onClick={copyEmailToClipboard}
+                                  className="p-2 hover:bg-burgundy-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
+                                  title="Copy email address"
+                                >
+                                  {emailCopied ? (
+                                    <Check className="w-4 h-4 text-green-600" />
+                                  ) : (
+                                    <Copy className="w-4 h-4 text-burgundy-600" />
+                                  )}
+                                </button>
+                              </div>
+                       
+                            </div>
+                          ) : info.title === "Phone" ? (
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-3">
+                                <button 
+                                  onClick={handlePhoneClick}
+                                  className="text-burgundy-600 font-medium text-sm sm:text-base hover:text-burgundy-700 transition-all duration-200 cursor-pointer underline hover:no-underline hover:bg-burgundy-50 px-2 py-1 rounded-md"
+                                >
+                                  {info.value}
+                                </button>
+                                <button
+                                  onClick={copyPhoneToClipboard}
+                                  className="p-2 hover:bg-burgundy-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
+                                  title="Copy phone number"
+                                >
+                                  {phoneCopied ? (
+                                    <Check className="w-4 h-4 text-green-600" />
+                                  ) : (
+                                    <Copy className="w-4 h-4 text-burgundy-600" />
+                                  )}
+                                </button>
+                              </div>
+                         
+                            </div>
+                          ) : (
+                            <a 
+                              href={info.link}
+                              className="text-burgundy-600 font-medium mb-1 text-sm sm:text-base hover:text-burgundy-700 transition-colors cursor-pointer underline"
+                            >
+                              {info.value}
+                            </a>
+                          )
                         ) : (
                           <p className="text-burgundy-600 font-medium mb-1 text-sm sm:text-base">{info.value}</p>
                         )}
-                        <p className="text-gray-600 text-xs sm:text-sm">{info.description}</p>
+                         <p className="text-gray-600 text-xs sm:text-sm">{info.description}</p>
                       </div>
                     </div>
                   ))}
@@ -293,16 +419,18 @@ const Contact = () => {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-burgundy-100 to-maroon-100 rounded-lg flex items-center justify-center text-burgundy-600 flex-shrink-0 border border-burgundy-200">
                       <Video className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Quick Meeting</h3>
-                      <button 
-                        onClick={() => window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')}
-                        className="text-burgundy-600 font-medium mb-1 text-sm sm:text-base hover:text-burgundy-700 transition-colors cursor-pointer underline"
-                      >
-                        Book a Google Meet call
-                      </button>
-                      <p className="text-gray-600 text-xs sm:text-sm">Schedule a 30-minute consultation</p>
-                    </div>
+                                         <div className="flex-1">
+                       <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Quick Meeting</h3>
+                       <div className="space-y-2">
+                         <button 
+                           onClick={() => window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')}
+                           className="text-burgundy-600 font-medium text-sm sm:text-base hover:text-burgundy-700 transition-all duration-200 cursor-pointer underline hover:no-underline hover:bg-burgundy-50 px-2 py-1 rounded-md inline-block"
+                         >
+                           Book a Free 30-Minute Call
+                         </button>
+                
+                       </div>
+                     </div>
                   </div>
                 </div>
 
