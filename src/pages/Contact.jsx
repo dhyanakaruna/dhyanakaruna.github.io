@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,30 +10,60 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const GETFORM_ENDPOINT = 'https://getform.io/f/aejejyzb';
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset the submitted state after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch(GETFORM_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        // Reset the submitted state after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        throw new Error('Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const obfuscateEmail = (email) => {
+    const [localPart, domain] = email.split('@');
+    const obfuscatedLocal = localPart.substring(0, 2) + '***' + localPart.substring(localPart.length - 1);
+    const obfuscatedDomain = domain.substring(0, 1) + '***' + domain.substring(domain.length - 4);
+    return `${obfuscatedLocal}@${obfuscatedDomain}`;
   };
 
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "dhyanakarunanidhi@gmail.com",
+      value: obfuscateEmail("dhyanakarunanidhi@gmail.com"),
       description: "Send me an email anytime",
       link: "mailto:dhyanakarunanidhi@gmail.com",
       isClickable: true
@@ -107,11 +137,31 @@ const Contact = () => {
                     className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center gap-3"
                   >
                     <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span className="text-green-800 font-medium text-sm sm:text-base">Thank you! Your message has been sent successfully.</span>
+                    <span className="text-green-800 font-medium text-sm sm:text-base">Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.</span>
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                {error && (
+                  <div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center gap-3"
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                    <span className="text-red-800 font-medium text-sm sm:text-base">{error}</span>
+                  </div>
+                )}
+
+                <form action={GETFORM_ENDPOINT} method="POST" onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  {/* Honeypot field for spam protection */}
+                  <input 
+                    type="text" 
+                    name="bot-field" 
+                    style={{ display: 'none' }} 
+                    tabIndex="-1" 
+                    autoComplete="off"
+                  />
+                  
                   <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -126,6 +176,7 @@ const Contact = () => {
                         required
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         placeholder="Your full name"
+                        disabled={isLoading}
                       />
                     </div>
                     <div>
@@ -141,6 +192,7 @@ const Contact = () => {
                         required
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors text-sm sm:text-base"
                         placeholder="your.email@example.com"
+                        disabled={isLoading}
                       />
                     </div>
                   </div>
@@ -158,6 +210,7 @@ const Contact = () => {
                       required
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors text-sm sm:text-base"
                       placeholder="What's this about?"
+                      disabled={isLoading}
                     />
                   </div>
                   
@@ -174,14 +227,25 @@ const Contact = () => {
                       rows={5}
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-500 focus:border-transparent transition-colors resize-none text-sm sm:text-base"
                       placeholder="Tell me about your project..."
+                      disabled={isLoading}
                     ></textarea>
                   </div>
                   
                   <button
                     type="submit"
-                    className="btn-primary w-full text-sm sm:text-base"
+                    disabled={isLoading}
+                    className="btn-primary w-full text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    Send Message <Send className="w-4 h-4" />
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
@@ -261,57 +325,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      {/* <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Common questions about my services and working process.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              {
-                question: "What is your typical project timeline?",
-                answer: "Project timelines vary depending on complexity. A simple website might take 2-4 weeks, while complex applications can take 2-3 months. I'll provide a detailed timeline during our initial consultation."
-              },
-              {
-                question: "Do you provide ongoing support after project completion?",
-                answer: "Yes, I offer ongoing support and maintenance packages. This includes regular updates, security monitoring, performance optimization, and technical support."
-              },
-              {
-                question: "What technologies do you specialize in?",
-                answer: "I work with modern web technologies including React, Node.js, Python, PHP, and various databases. I stay updated with the latest trends and best practices."
-              },
-              {
-                question: "How do you handle project communication?",
-                answer: "I maintain regular communication through email, video calls, and project management tools. You'll receive weekly progress updates and can reach me during business hours."
-              }
-            ].map((faq, index) => (
-              <div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 rounded-lg p-6"
-              >
-                <h3 className="font-semibold text-gray-900 mb-3">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
     </>
   );
