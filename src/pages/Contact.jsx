@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2, Video } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -75,22 +75,6 @@ const Contact = () => {
       description: "Call me anytime",
       link: "tel:+918526853322",
       isClickable: true
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      value: "Coimbatore, India",
-      description: "Available for remote work worldwide",
-      link: null,
-      isClickable: false
-    },
-    {
-    icon: <Clock className="w-6 h-6" />,
-    title: "Available Hours",
-    value: "Daily: 9AM - 8PM IST",
-    description: "Indian Standard Time",
-    link: null,
-    isClickable: false
     }
   ];
 
@@ -297,6 +281,29 @@ const Contact = () => {
                       </div>
                     </div>
                   ))}
+                  
+                  {/* Quick Book Meeting Button */}
+                  <div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3 sm:gap-4"
+                  >
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-burgundy-100 to-maroon-100 rounded-lg flex items-center justify-center text-burgundy-600 flex-shrink-0 border border-burgundy-200">
+                      <Video className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Quick Meeting</h3>
+                      <button 
+                        onClick={() => window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')}
+                        className="text-burgundy-600 font-medium mb-1 text-sm sm:text-base hover:text-burgundy-700 transition-colors cursor-pointer underline"
+                      >
+                        Book a Google Meet call
+                      </button>
+                      <p className="text-gray-600 text-xs sm:text-sm">Schedule a 30-minute consultation</p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Social Links */}
@@ -325,6 +332,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
 
     </>
   );

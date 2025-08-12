@@ -350,16 +350,33 @@ const Services = () => {
               to build innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base">
+              <button 
+                className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base"
+                onClick={() => {
+                  navigate('/');
+                  // Scroll to bottom after navigation
+                  setTimeout(() => {
+                    window.scrollTo({
+                      top: document.documentElement.scrollHeight,
+                      behavior: 'smooth'
+                    });
+                  }, 100);
+                }}
+              >
                 Get In Touch
               </button>
-              <button className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base" onClick={() => navigate('/contact')}>
+              <button 
+                className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base" 
+                onClick={() => window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')}
+              >
                 Schedule a Call
               </button>
             </div>
           </div>
         </div>
       </section>
+
+
     </>
   );
 };
