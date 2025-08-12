@@ -120,9 +120,7 @@ const Contact = () => {
     const body = `Hi Dhyana,
 
     I came across your profile and noticed your work and expertise. I’d be glad to connect and explore ways we might work together or share ideas.
-
-    Whether you're interested in freelance projects, collaboration opportunities, coding partnerships, or have any questions, I'd be happy to chat.
-
+    
     Please let me know when would be a convenient time to connect.
 
     Best regards`;
