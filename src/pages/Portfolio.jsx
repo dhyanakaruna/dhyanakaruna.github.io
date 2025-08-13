@@ -5,7 +5,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "SkillSwap - Time-Banking Community Platform",
-      description: "A comprehensive time-banking platform where neighbors connect, share skills, and build community—with every hour exchanged treated as currency. Features interactive maps, skill reviews, and transparent time tracking.",
+      description: "A comprehensive time-banking platform where neighbors connect, share skills, and build community with every hour exchanged treated as currency. Features interactive maps, skill reviews, and transparent time tracking.",
       category: "Community Platform",
       image: "/skill-swap.png",
       link: "https://neighbour-nest.vercel.app/",
