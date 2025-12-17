@@ -38,7 +38,7 @@ const Home = () => {
                   Get In Touch <ArrowRight className="w-4 h-4" />
                 </button>
                 <a 
-                  href="https://drive.google.com/file/d/1jf4-X2aYkmyQqsK0CJll2vvfbogEseET/view?usp=sharing"
+                  href="https://dhyana-k-resume.tiiny.site"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary w-full sm:w-auto text-center"
