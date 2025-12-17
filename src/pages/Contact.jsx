@@ -144,13 +144,6 @@ const Contact = () => {
       description: "Send me an email anytime",
       isClickable: true
     },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: obfuscatePhone("+91 8526853322"),
-      description: "Call me anytime",
-      isClickable: true
-    }
   ];
 
   return (
@@ -324,7 +317,7 @@ const Contact = () => {
                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Contact Information</h2>
                    <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
                      Choose your preferred way to connect! I'm here to help and typically respond within 24 hours. 
-                     Whether you have a project in mind, want to collaborate, or just want to chat, feel free to reach out.
+                     Whether you have a project in mind or want to collaborate feel free to reach out.
                    </p>
                  </div>
 
