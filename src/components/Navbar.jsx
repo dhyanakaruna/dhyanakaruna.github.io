@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: 'Home', id: 'home', path: '/' },
     { name: 'Skills', id: 'skills', path: '/' },
     { name: 'Portfolio', id: 'portfolio', path: '/' },
-    { name: 'Service', id: 'services', path: '/services' },
+    { name: 'Expertise', id: 'services', path: '/services' },
     { name: 'Conferences', id: 'conferences', path: '/conferences' },
     { name: 'Contact', id: 'contact', path: '/' },
   ];
@@ -84,9 +84,9 @@ const Navbar = () => {
                 onClick={() => handleNavClick(item)}
                 className={`font-medium transition-colors duration-200 ${
                   (location.pathname === '/conferences' && item.name === 'Conferences') ||
-                  (location.pathname === '/services' && item.name === 'Service')
+                  (location.pathname === '/services' && item.name === 'Expertise')
                     ? 'text-burgundy-600 border-b-2 border-burgundy-600'
-                    : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Service'
+                    : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Expertise'
                     ? 'text-gray-600 hover:text-burgundy-600'
                     : 'text-gray-600 hover:text-burgundy-600'
                 }`}
@@ -120,9 +120,9 @@ const Navbar = () => {
                   onClick={() => handleNavClick(item)}
                   className={`block w-full text-left font-medium transition-colors duration-200 ${
                     (location.pathname === '/conferences' && item.name === 'Conferences') ||
-                    (location.pathname === '/services' && item.name === 'Service')
+                    (location.pathname === '/services' && item.name === 'Expertise')
                       ? 'text-burgundy-600 bg-gradient-to-r from-burgundy-50 to-maroon-50 px-4 py-2 rounded-lg border border-burgundy-200'
-                      : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Service'
+                      : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Expertise'
                       ? 'text-gray-600 hover:text-burgundy-600'
                       : 'text-gray-600 hover:text-burgundy-600'
                   }`}
