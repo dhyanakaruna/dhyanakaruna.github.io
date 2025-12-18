@@ -1,146 +1,158 @@
+import { 
+  Code, Database, Palette, Smartphone, BarChart3, Globe, Check, 
+  ArrowRight, Cloud, Shield, ArrowLeft, Star, Zap, Users, Award 
+} from 'lucide-react';
 
-import { Code, Database, Palette, Smartphone, BarChart3, Globe, Check, ArrowRight, Cloud, Shield, ArrowLeft, Star, Zap, Users, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const Services = () => {
+const Expertise = () => {
   const navigate = useNavigate();
 
-  // Scroll to top when component mounts
+  // Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const services = [
+
+  // Core Engineering Areas
+  const expertise = [
     {
       icon: <Code className="w-8 h-8 text-burgundy-600" />,
-      title: "Full-Stack Development",
-      description: "Enterprise-grade web applications built with React, Next.js, TypeScript, and Node.js. Scalable solutions with modern architecture patterns.",
+      title: "Full-Stack Engineering",
+      description:
+        "Building scalable, maintainable, and performant applications using modern frontend and backend technologies.",
       features: [
-        "React & Next.js Development",
-        "TypeScript Implementation",
-        "RESTful API Development",
+        "React & Next.js Application Development",
+        "TypeScript-based Architecture",
+        "Node.js Backend Engineering",
+        "API Design & System Integration",
         "Performance Optimization",
-        "Security Best Practices",
-        "Modern UI/UX Design"
-      ],
-      price: "Enterprise Solutions"
+        "Reusable UI Components"
+      ]
     },
     {
       icon: <Cloud className="w-8 h-8 text-burgundy-600" />,
-      title: "AWS Cloud Architecture",
-      description: "Design and implement scalable cloud infrastructure using AWS services including EC2, RDS, S3, and serverless solutions.",
+      title: "Cloud & Infrastructure (AWS)",
+      description:
+        "Designing secure, modular, and cost-efficient cloud environments with AWS services and infrastructure best practices.",
       features: [
-        "AWS Infrastructure Design",
-        "Serverless Architecture",
-        "CI/CD Pipeline Setup",
-        "Security & IAM Configuration",
-        "Performance Monitoring",
-        "Cost Optimization"
-      ],
-      price: "Cloud Solutions"
+        "AWS Architecture Design",
+        "Serverless Workflows (Lambda, API Gateway)",
+        "CI/CD Pipelines",
+        "IAM & Security Hardening",
+        "Monitoring & Observability",
+        "Scalability Planning"
+      ]
     },
     {
       icon: <Database className="w-8 h-8 text-burgundy-600" />,
-      title: "Database & ORM Solutions",
-      description: "Database design, optimization, and management using PostgreSQL, MySQL, and Prisma ORM for robust data handling.",
+      title: "Databases & Data Modeling",
+      description:
+        "Structured schema design, query optimization, and ORM-driven workflows for reliable data systems.",
       features: [
-        "Database Schema Design",
-        "Prisma ORM Integration",
-        "Query Optimization",
-        "Data Migration",
-        "Backup Strategies",
-        "Performance Tuning"
-      ],
-      price: "Database Solutions"
+        "PostgreSQL & MySQL",
+        "Prisma ORM",
+        "Schema Design & Migrations",
+        "Query Performance Tuning",
+        "Backup & Recovery Planning",
+        "Data Consistency Patterns"
+      ]
     },
     {
       icon: <BarChart3 className="w-8 h-8 text-burgundy-600" />,
-      title: "Payment Integration",
-      description: "Secure payment processing integration with Stripe and Cashfree, including webhook handling and fraud prevention.",
+      title: "Payments & Integrations",
+      description:
+        "Integrating secure payment flows and external systems with robust event handling and validation.",
       features: [
         "Stripe Integration",
-        "Cashfree Payment Gateway",
-        "Webhook Implementation",
-        "Security Compliance",
-        "Error Handling",
-        "Testing & Validation"
-      ],
-      price: "Payment Solutions"
+        "Cashfree Payment Workflows",
+        "Webhook Processing",
+        "Error & Edge-Case Handling",
+        "Security & Compliance",
+        "Automated Validation"
+      ]
     },
     {
       icon: <Palette className="w-8 h-8 text-burgundy-600" />,
       title: "Enterprise Application Development",
-      description: "Building robust enterprise applications with modern technologies, focusing on scalability, security, and performance.",
+      description:
+        "Developing complex systems with strong foundations in architecture, modularity, and scalability.",
       features: [
-        "Full-Stack Applications",
+        "End-to-End Application Development",
         "Microservices Architecture",
-        "API Development",
-        "System Integration",
-        "Performance Optimization",
-        "Security Implementation"
-      ],
-      price: "Enterprise Solutions"
+        "Distributed Systems Thinking",
+        "Robust API Layers",
+        "High-Performance Workflows",
+        "Security-First Engineering"
+      ]
     },
     {
       icon: <Shield className="w-8 h-8 text-burgundy-600" />,
-      title: "Security Implementation",
-      description: "Comprehensive security solutions including authentication, authorization, and compliance with industry standards.",
+      title: "Security & Reliability",
+      description:
+        "Implementing secure engineering practices to ensure application integrity and operational safety.",
       features: [
-        "Multi-Factor Authentication",
-        "Role-Based Access Control",
-        "API Security",
+        "Authentication & Access Control",
+        "API Security Standards",
         "Data Encryption",
-        "Security Auditing",
-        "Compliance Standards"
-      ],
-      price: "Security Solutions"
+        "Security Reviews & Audits",
+        "Compliance-Aligned Approaches",
+        "Threat Mitigation"
+      ]
     },
     {
       icon: <Globe className="w-8 h-8 text-burgundy-600" />,
-      title: "DevOps & Monitoring",
-      description: "Complete DevOps solutions with automated deployments, monitoring, and error tracking using modern tools.",
+      title: "DevOps & Automation",
+      description:
+        "Creating workflows that improve developer experience, deployment reliability, and operational visibility.",
       features: [
-        "CI/CD Pipeline Setup",
-        "Sentry Error Tracking",
-        "Performance Monitoring",
+        "CI/CD Setup",
+        "Monitoring & Alerting",
+        "Sentry & Error Tracking",
         "Automated Testing",
         "Deployment Automation",
-        "Infrastructure Management"
-      ],
-      price: "DevOps Solutions"
+        "Infrastructure as Code"
+      ]
     }
   ];
 
+  // Engineering Process
   const process = [
     {
       step: "01",
-      title: "Discovery & Planning",
-      description: "Understanding your requirements, goals, and target audience to create a comprehensive project plan."
+      title: "Understanding the Problem",
+      description:
+        "Gaining clarity on functional requirements, constraints, business logic, and user expectations."
     },
     {
       step: "02",
-      title: "Design & Prototyping",
-      description: "Creating wireframes, mockups, and interactive prototypes to visualize the final product."
+      title: "Design & Architecture",
+      description:
+        "Translating requirements into reliable system designs, technical documentation, and interface structures."
     },
     {
       step: "03",
       title: "Development",
-      description: "Building your project using modern technologies and best practices for optimal performance."
+      description:
+        "Building features with clean, modular code and best practices for long-term maintainability."
     },
     {
       step: "04",
-      title: "Testing & Quality Assurance",
-      description: "Thorough testing across different devices and browsers to ensure flawless functionality."
+      title: "Testing & Validation",
+      description:
+        "Ensuring correctness through unit tests, integration checks, performance reviews, and security validations."
     },
     {
       step: "05",
-      title: "Deployment & Launch",
-      description: "Deploying your project to production and ensuring everything works perfectly."
+      title: "Deployment",
+      description:
+        "Releasing features smoothly with reliable CI/CD pipelines and monitoring tools."
     },
     {
       step: "06",
-      title: "Support & Maintenance",
-      description: "Providing ongoing support and maintenance to keep your project running smoothly."
+      title: "Iterate & Improve",
+      description:
+        "Continuously enhancing performance, reliability, and user experience based on feedback and metrics."
     }
   ];
 
@@ -149,12 +161,7 @@ const Services = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <div className="flex justify-start mb-4">
               <button
                 onClick={() => navigate('/')}
@@ -164,38 +171,35 @@ const Services = () => {
                 Back to Portfolio
               </button>
             </div>
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              My <span className="text-gradient">Services</span>
+              My <span className="text-gradient">Expertise</span>
             </h1>
+
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-              I specialize in full-stack development and cloud architecture, delivering enterprise-grade solutions with modern technologies. 
-              My expertise spans from frontend development to backend systems and cloud infrastructure.
+              I work across full-stack engineering, cloud infrastructure, and systems design—
+              shaping reliable applications that balance performance, scalability, and maintainability.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Expertise Grid */}
       <section className="section-padding bg-gradient-to-br from-gray-50/80 via-blue-50/40 to-purple-50/40 backdrop-blur-sm">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card group hover:scale-105 transition-transform duration-300"
-              >
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600 mb-4">{service.description}</p>
-                
+            {expertise.map((item, index) => (
+              <div key={index} className="card group hover:scale-105 transition-transform duration-300">
+                <div className="mb-4">{item.icon}</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 mb-4">{item.description}</p>
+
                 <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">What's Included:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">
+                    Core Capabilities:
+                  </h4>
                   <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
+                    {item.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-burgundy-600 flex-shrink-0" />
                         <span className="text-gray-600 text-xs sm:text-sm">{feature}</span>
@@ -203,45 +207,27 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="text-burgundy-600 font-bold text-base sm:text-lg mb-3">{service.price}</div>
-                  <button className="btn-primary w-full text-sm sm:text-base">
-                    Learn More <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Development Process */}
+      {/* Engineering Process */}
       <section className="section-padding bg-gradient-to-br from-white/90 via-blue-50/50 to-purple-50/50 backdrop-blur-sm">
         <div className="container-custom">
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">My Development Process</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              How I Approach Engineering
+            </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              A proven methodology that ensures successful project delivery and client satisfaction.
+              A structured, thoughtful workflow that ensures high-quality, dependable software.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {process.map((step, index) => (
-              <div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
+              <div key={index} className="text-center">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-burgundy-100 to-maroon-100 rounded-full flex items-center justify-center mx-auto mb-4 border border-burgundy-200">
                   <span className="text-burgundy-600 font-bold text-lg sm:text-xl">{step.step}</span>
                 </div>
@@ -253,25 +239,21 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Why Choose Me - Enhanced */}
+      {/* Why Choose Me */}
       <section className="section-padding bg-gradient-to-br from-gray-50/80 via-blue-50/40 to-purple-50/40 backdrop-blur-sm">
         <div className="container-custom">
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <div className="inline-block bg-gradient-to-r from-burgundy-100 to-maroon-100 text-burgundy-600 px-4 py-2 rounded-full text-sm font-medium mb-4 border border-burgundy-200">
-              Why Choose Me
+              What I Value in Engineering
             </div>
+
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              What Makes Me <span className="text-gradient">Different</span>
+              Principles That Guide My Work
             </h2>
+
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              I bring a unique combination of technical expertise, reliability, and dedication to every project. 
-              Here's what sets me apart from the rest.
+              I care deeply about writing reliable software, building meaningful systems,
+              and contributing to environments that appreciate quality engineering.
             </p>
           </div>
 
@@ -279,56 +261,46 @@ const Services = () => {
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               {[
                 {
-                  icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
-                  title: "Quality Assurance",
-                  description: "Every project undergoes rigorous testing to ensure flawless functionality and performance.",
-                  bgColor: "bg-gradient-to-br from-green-500 to-green-600",
-                  stats: "99.9%"
+                  icon: <Shield className="w-5 h-5 text-white" />,
+                  title: "Quality First",
+                  description:
+                    "Thoughtful design, clean code, and comprehensive testing form the foundation of everything I build.",
+                  bgColor: "bg-gradient-to-br from-green-500 to-green-600"
                 },
                 {
-                  icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
-                  title: "Timely Delivery",
-                  description: "I value your time and always deliver projects on schedule with regular progress updates.",
-                  bgColor: "bg-gradient-to-br from-blue-500 to-blue-600",
-                  stats: "100%"
+                  icon: <Zap className="w-5 h-5 text-white" />,
+                  title: "Ownership & Accountability",
+                  description:
+                    "I take responsibility for the systems I work on—from understanding the problem to shipping reliable solutions.",
+                  bgColor: "bg-gradient-to-br from-blue-500 to-blue-600"
                 },
                 {
-                  icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
-                  title: "Ongoing Support",
-                  description: "I provide continued support and maintenance to keep your project running smoothly.",
-                  bgColor: "bg-gradient-to-br from-purple-500 to-purple-600",
-                  stats: "24/7"
+                  icon: <Users className="w-5 h-5 text-white" />,
+                  title: "Collaboration",
+                  description:
+                    "Good engineering grows through teamwork, knowledge-sharing, and clear communication.",
+                  bgColor: "bg-gradient-to-br from-purple-500 to-purple-600"
                 },
                 {
-                  icon: <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
-                  title: "Modern Technologies",
-                  description: "Using the latest technologies and best practices to create scalable and future-proof solutions.",
-                  bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
-                  stats: "Latest"
+                  icon: <Award className="w-5 h-5 text-white" />,
+                  title: "Continuous Learning",
+                  description:
+                    "The landscape evolves quickly—staying curious keeps me improving and building better systems.",
+                  bgColor: "bg-gradient-to-br from-orange-500 to-orange-600"
                 }
               ].map((item, index) => (
-                <div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="card group hover:scale-105 transition-all duration-300 border-l-4 border-l-burgundy-500"
-                >
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 ${item.bgColor} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
+                <div key={index} className="card group hover:scale-105 transition-all duration-300 border-l-4 border-l-burgundy-500">
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 ${item.bgColor} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
                       {item.icon}
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-burgundy-600 transition-colors duration-300">
-                          {item.title}
-                        </h3>
-                        <span className="text-xs bg-gradient-to-r from-burgundy-100 to-maroon-100 text-burgundy-600 px-2 py-1 rounded-full font-bold border border-burgundy-200">
-                          {item.stats}
-                        </span>
-                      </div>
-                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-burgundy-600 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mt-1">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -340,51 +312,45 @@ const Services = () => {
 
       {/* Call to Action */}
       <section className="section-padding bg-gradient-collaborate animate-gradient-shift">
-        <div className="container-custom">
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Collaborate?
-            </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-2xl mx-auto">
-              Let's discuss your technical requirements and explore how we can work together 
-              to build innovative solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base"
-                onClick={() => {
-                  navigate('/');
-                  // Scroll to bottom after navigation
-                  setTimeout(() => {
-                    window.scrollTo({
-                      top: document.documentElement.scrollHeight,
-                      behavior: 'smooth'
-                    });
-                  }, 100);
-                }}
-              >
-                Get In Touch
-              </button>
-              <button 
-                className="bg-white/90 backdrop-blur-sm text-burgundy-600 hover:bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300 border border-white/50 text-sm sm:text-base" 
-                onClick={() => window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')}
-              >
-                Schedule a Call
-              </button>
-            </div>
+        <div className="container-custom text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+            Want to Connect?
+          </h2>
+          <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-2xl mx-auto">
+            Whether it’s discussing engineering challenges, system design, or potential opportunities —
+            I’m always open to meaningful conversations.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              className="bg-white/90 text-burgundy-600 px-8 py-4 rounded-lg font-semibold transition-colors border border-white/50"
+              onClick={() => {
+                navigate('/');
+                setTimeout(() => {
+                  window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'
+                  });
+                }, 100);
+              }}
+            >
+              Get In Touch
+            </button>
+
+            <button
+              className="bg-white/90 text-burgundy-600 px-8 py-4 rounded-lg font-semibold border border-white/50"
+              onClick={() =>
+                window.open('https://calendly.com/dhyanakarunanidhi/new-meeting', '_blank')
+              }
+            >
+              Schedule a Call
+            </button>
           </div>
         </div>
       </section>
-
-
     </>
   );
 };
 
-export default Services; 
+export default Expertise;
+
