@@ -177,8 +177,7 @@ const Expertise = () => {
             </h1>
 
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-              I work across full-stack engineering, cloud infrastructure, and systems design—
-              shaping reliable applications that balance performance, scalability, and maintainability.
+              I work across full-stack engineering, cloud infrastructure, and systems design, shaping reliable applications that balance performance, scalability, and maintainability.
             </p>
           </div>
         </div>
@@ -317,7 +316,7 @@ const Expertise = () => {
             Want to Connect?
           </h2>
           <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-2xl mx-auto">
-            Whether it’s discussing engineering challenges, system design, or potential opportunities —
+            Whether it’s discussing engineering challenges, system design, or potential opportunities,
             I’m always open to meaningful conversations.
           </p>
 
