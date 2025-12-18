@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: 'Home', id: 'home', path: '/' },
     { name: 'Skills', id: 'skills', path: '/' },
     { name: 'Portfolio', id: 'portfolio', path: '/' },
-    { name: 'Expertise', id: 'services', path: '/services' },
+    { name: 'Expertise', id: 'expertise', path: '/expertise' },
     { name: 'Conferences', id: 'conferences', path: '/conferences' },
     { name: 'Contact', id: 'contact', path: '/' },
   ];
@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   const handleNavClick = (item) => {
-    if (item.path === '/conferences' || item.path === '/services') {
+    if (item.path === '/conferences' || item.path === '/expertise') {
       // Navigate to separate pages
       navigate(item.path);
     } else if (location.pathname !== '/') {
@@ -84,7 +84,7 @@ const Navbar = () => {
                 onClick={() => handleNavClick(item)}
                 className={`font-medium transition-colors duration-200 ${
                   (location.pathname === '/conferences' && item.name === 'Conferences') ||
-                  (location.pathname === '/services' && item.name === 'Expertise')
+                  (location.pathname === '/expertise' && item.name === 'Expertise')
                     ? 'text-burgundy-600 border-b-2 border-burgundy-600'
                     : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Expertise'
                     ? 'text-gray-600 hover:text-burgundy-600'
@@ -120,7 +120,7 @@ const Navbar = () => {
                   onClick={() => handleNavClick(item)}
                   className={`block w-full text-left font-medium transition-colors duration-200 ${
                     (location.pathname === '/conferences' && item.name === 'Conferences') ||
-                    (location.pathname === '/services' && item.name === 'Expertise')
+                    (location.pathname === '/expertise' && item.name === 'Expertise')
                       ? 'text-burgundy-600 bg-gradient-to-r from-burgundy-50 to-maroon-50 px-4 py-2 rounded-lg border border-burgundy-200'
                       : location.pathname === '/' && item.name !== 'Conferences' && item.name !== 'Expertise'
                       ? 'text-gray-600 hover:text-burgundy-600'
