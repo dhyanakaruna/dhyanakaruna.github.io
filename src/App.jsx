@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Portfolio from './pages/Portfolio';
-import Services from './pages/Services';
+import Expertise from './pages/Expertise';
 import Conferences from './pages/Conferences';
 import Contact from './pages/Contact';
 
