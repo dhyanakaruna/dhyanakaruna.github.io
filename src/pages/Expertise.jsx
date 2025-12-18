@@ -270,7 +270,7 @@ const Expertise = () => {
                   icon: <Zap className="w-5 h-5 text-white" />,
                   title: "Ownership & Accountability",
                   description:
-                    "I take responsibility for the systems I work on—from understanding the problem to shipping reliable solutions.",
+                    "I take responsibility for the systems I work on, from understanding the problem to shipping reliable solutions.",
                   bgColor: "bg-gradient-to-br from-blue-500 to-blue-600"
                 },
                 {
@@ -284,7 +284,7 @@ const Expertise = () => {
                   icon: <Award className="w-5 h-5 text-white" />,
                   title: "Continuous Learning",
                   description:
-                    "The landscape evolves quickly—staying curious keeps me improving and building better systems.",
+                    "The landscape evolves quickly, staying curious keeps me improving and building better systems.",
                   bgColor: "bg-gradient-to-br from-orange-500 to-orange-600"
                 }
               ].map((item, index) => (
