@@ -37,14 +37,6 @@ const Home = () => {
                 >
                   Get In Touch <ArrowRight className="w-4 h-4" />
                 </button>
-                <a 
-                  href="https://dhyana-k-resume.tiiny.site"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary w-full sm:w-auto text-center"
-                >
-                  Download CV
-                </a>
               </div>
             </div>
 
